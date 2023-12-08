@@ -49,7 +49,7 @@ class UsersRepositoryTest {
 
     @Test
     @DisplayName(" Test for save User operation")
-    public void givenUserObject_whenSave_thenReturnSaveEmployee(){
+    public void givenUserObjectWhenSaveThenReturnSaveEmployee(){
         User saveUser = usersRepository.save(user);
 
         assert(saveUser.getUsername()).equals(user.getUsername());
