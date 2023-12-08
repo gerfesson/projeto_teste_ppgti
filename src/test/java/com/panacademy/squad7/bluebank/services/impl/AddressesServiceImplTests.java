@@ -26,26 +26,26 @@ public class AddressesServiceImplTests {
     @Before
     public void setup() {
         inputAddress = new Address() {
-        {
-        setStreet("AV Salgado Filho");
-        setClient(new Client() {
             {
-            setId(Long.valueOf(1234));
+            setStreet("AV Salgado Filho");
+            setClient(new Client() {
+                {
+                setId(Long.valueOf(1234));
+                }
+            });
             }
-        });
-        }
-    };
+        };
 
-    expectedAddress = new Address() {
-        {
-        setStreet("AV Salgado Filho");
-        setClient(new Client() {
+        expectedAddress = new Address() {
             {
-            setId(Long.valueOf(1234));
+            setStreet("AV Salgado Filho");
+            setClient(new Client() {
+                {
+                setId(Long.valueOf(1234));
+                }
+            });
             }
-        });
-        }
-    };
+        };
     }
 
     @Test
@@ -53,7 +53,7 @@ public class AddressesServiceImplTests {
         Optional<Address> optionalAddress = Optional.of(expectedAddress);
 
         Mockito.when(mockAddressesRepository.save(inputAddress)).thenReturn(inputAddress);
-        Mockito.when(mockAddressesRepository.findByClientId(1L)).thenReturn(optionalAddress);
+        Mockito.when(mockAddressesRepository.findByClientId(inputAddress.getId())).thenReturn(optionalAddress);
 
         Address actualAddress = service.create(inputAddress);
 

@@ -51,7 +51,7 @@ public class ClientsServiceImplTests {
 
     @Test
     public void testFindClientByIdWithSuccess() {
-        Mockito.when(mockClientsRepository.findById(expectedClient.getId())).thenReturn(Optional.of(expectedClient));
+        Mockito.when(mockClientsRepository.findById(inputClient.getId())).thenReturn(Optional.of(inputClient));
 
         Client actualClient = service.findById(inputClient.getId());
 
@@ -60,7 +60,7 @@ public class ClientsServiceImplTests {
     
     @Test
     public void testFindClientByIdWithFailure() {
-        Mockito.when(mockClientsRepository.findById(expectedClient.getId())).thenReturn(Optional.empty());
+        Mockito.when(mockClientsRepository.findById(inputClient.getId())).thenReturn(Optional.empty());
 
         assertThrows(ContentNotFoundException.class, () -> service.findById(inputClient.getId()));
     }
